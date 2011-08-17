@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.shinetech</groupId>
+  <artifactId>shine-reference</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>Shine GWT/Spring Reference parent project</description>
+
+  <modules>
+    <module>shine-reference-common</module>
+    <module>shine-reference-spring</module>
+    <module>shine-reference-gwt</module>
+  </modules>
+</project>

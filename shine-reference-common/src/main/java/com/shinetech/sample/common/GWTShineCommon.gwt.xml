@@ -1,0 +1,4 @@
+<!-- GWT Module Definition -->
+<module>
+  <source path="dto"/>
+</module> 

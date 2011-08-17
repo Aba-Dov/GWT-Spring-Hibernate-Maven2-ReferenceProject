@@ -1,0 +1,37 @@
+
+Welcome to Shine GWT/Spring Reference
+======================================
+ 
+1) Maven 2.* and Java 5 must be installed and available from the command line. Check :
+> mvn -version
+> java -version
+
+2) GWT 1.4.62 should be downloaded and installed locally on the machine. Then update the maven2 settings file in your home directory
+eg, File : ~/.m2/settings.xml
+<settings>
+   <profiles>
+     <profile>
+       <id>gwt-1.4.62</id>
+       <properties>
+         <google.webtoolkit.home>/Applications/java/gwt-mac-1.4.62</google.webtoolkit.home>
+         <!-- XstartOnFirstThread needed only on the mac -->
+         <google.webtoolkit.extrajvmargs>-XstartOnFirstThread</google.webtoolkit.extrajvmargs>
+       </properties>
+     </profile>
+   </profiles>
+   <activeProfiles>
+     <activeProfile>gwt-1.4.62</activeProfile>
+   </activeProfiles>
+</settings>
+
+3) Create the common layer between GWT and Spring
+> cd ./shine-reference/shine-reference-common
+> mvn source:jar install
+
+4) Run the Spring Layer
+> cd ../shine-reference-spring
+> mvn jetty:run-war
+
+5) Run the GWT Layer (this will start a popup window showing the application running in GWT hosted mode)
+cd ../shine-reference-gwt
+mvn gwt:gwt

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	
+	<display-name>Shine GWT Sample</display-name>
+	
+    <!-- 
+    Bit of a hack here due to the bug in the gwt maven support
+	http://groups.google.com/group/gwt-maven/browse_thread/thread/20276dab9cfcef38/679206309ed261da?lnk=gst&q=getModuleBaseURL#679206309ed261da			
+	And the fact that "mvn gwt:gwt" and "mvn package" do not include the web.xml as
+	built by gwt:gwt and placed in target/web.xml. So hosted mode works but deploying as a war doesnt.
+	After deployment in tomcat, uncomment the following section to make it work.
+	Any ideas for fixes for next iteration much appreciated!
+	-->
+	
+	<!-- 	
+	<servlet>
+		<servlet-name>service</servlet-name>
+		<servlet-class>com.shinetech.server.SampleServiceImpl</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>service</servlet-name>
+		<url-pattern>/com.shinetech.SampleApp/service</url-pattern>
+	</servlet-mapping>
+	-->
+</web-app>

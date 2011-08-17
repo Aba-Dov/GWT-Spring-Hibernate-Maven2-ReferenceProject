@@ -1,0 +1,8 @@
+   //@Autowired
+   //@Qualifier(value = "memberDetailsService")
+   private IMemberDetailsService svcMemberDetails;
+
+spring doesn't have very friendly servlet support, so autowiring won't work (probably wouldn't anyway unless the class was defined as a bean)
+you can use WebApplicationContextUtils though to get the current context
+
+

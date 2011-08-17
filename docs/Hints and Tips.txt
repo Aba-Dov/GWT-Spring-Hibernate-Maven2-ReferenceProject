@@ -1,0 +1,17 @@
+
+Maven2 - SubProjects
+=====================
+
+Multi-project aggregation is used rather than inheritance. 
+
+
+To make changes to this project, easiest way is to install the Maven2 CodeHaus Eclipse plugin available here:
+http://m2eclipse.codehaus.org/update/
+
+Sub-Project Creation
+---------------------
+To create a sub-project that can then be checked out independently and maintained in a separate Eclipse project:
+
+> mvn archetype:create -DgroupId=com.shinetech -DartifactId=shine-reference-common
+> cd shine-reference-common
+> mvn eclipse:eclipse 

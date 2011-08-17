@@ -1,0 +1,15 @@
+<module>
+
+	<!-- Inherit the core Web Toolkit stuff. -->
+	<inherits name='com.google.gwt.user.User'/>
+
+	<!-- Inherit the common classes from the Service Project -->
+	<inherits name='com.shinetech.sample.common.GWTShineCommon'/>
+
+	<!-- Specify the app entry point class.                   -->
+	<entry-point class='com.shinetech.client.SampleApp'/>
+  
+    <servlet path="/service" class="com.shinetech.server.SampleServiceImpl" />
+                                    
+</module>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<!--
+	// springconfig-service.xml
+	// Spring Configuration for Remote Spring Services 
+-->
+<beans>
+
+	<!-- 
+	// Server Properties
+	-->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:remoteserver.properties</value>
+			</list>
+		</property>		
+	</bean>	
+	
+	<!-- 
+	// Remote Services - HttpInvoker
+	-->
+	<bean id="memberDetailsService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		<property name="serviceUrl">
+			<value>http://${serverName}/Shine-Spring-Sample/memberDetailsService.httpInvoker.service</value>
+		</property>
+		<property name="serviceInterface">
+			<value>com.shinetech.sample.common.IMemberDetailsService</value>
+		</property>		
+	</bean>
+	
+</beans>

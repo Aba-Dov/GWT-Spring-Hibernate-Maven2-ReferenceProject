@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+
+<project name="Shine-Sample-Common" default="release-google-code" basedir=".">
+	<description>
+	 Build script for Deploying new Project
+	</description>
+
+	<property name="project.name" value="shine-reference" />
+	<property name="build" location="target" />
+	<property name="googlecode-release" value="${project.name}-0.3.zip" />
+	<property name="dist" location="target" />
+
+
+	<!-- /////////////////////////////////////////////// -->
+	<!-- Initialise                                      -->
+	<!-- /////////////////////////////////////////////// -->
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<delete dir="${build}" />
+		<mkdir dir="${build}" />
+	</target>
+			
+		
+	<!-- /////////////////////////////////////////////// -->
+	<!-- Release this project as Google Code Download    -->
+	<!-- /////////////////////////////////////////////// -->
+	<target name="release-google-code" depends="init" description="Google Code Release">
+		<delete file="${dist}/${googlecode-release}" />
+		<zip destfile="${dist}/${googlecode-release}">
+			<zipfileset dir="." prefix="${project.name}" excludes="**/target/**, **/work/**, **/.gwt-cache/**" />
+		</zip>
+	</target>
+	
+</project>

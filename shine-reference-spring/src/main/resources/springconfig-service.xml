@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-autowire="byName">
+	<context:annotation-config />
+	
+	<bean id="memberDetailsService"	class="com.shinetech.sample.service.impl.MemberDetailsServiceImpl" />
+	
+
+	<!--
+		Declaration of RPC service with the RPCServiceExporter which behaves
+		very similar to a Spring controller and needs to be mapped to URLs the
+		same way any other Spring controller is mapped...
+	-->	
+	<bean id="RPCTestPOJO" class="org.gwtwidgets.server.spring.GWTRPCServiceExporter">
+		<property name="service" ref="memberDetailsService" />
+		<property name="serviceInterfaces"> <value>	com.shinetech.sample.common.IMemberDetailsService</value></property>
+	</bean>
+
+
+<!--
+	... with a SimpleUrlHandlerMapping for instance:
+-->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<map>
+				<entry key="/service" value-ref="RPCTestPOJO" />
+			</map>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+	Defines the Data Layer 
+-->
+<beans default-autowire="byName">
+
+	<bean id="sessionFactory" 
+		  class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+
+		<property name="annotatedClasses">
+			<list>
+				<value>com.shinetech.sample.service.domain.Member</value>				
+			</list>
+		</property>
+
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+		
+		<property name="configurationClass">
+			<value>org.hibernate.cfg.AnnotationConfiguration</value>
+		</property>
+	</bean>
+	
+	<!-- Define the DAO objects -->
+	<bean id="MemberDao" class="com.shinetech.sample.service.dao.impl.MemberDao" />
+	
+	<!-- Attach the transaction manager to all dao objects -->
+	<!-- 
+	<bean id="transactionalMemberDao" 
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="target" ref="MemberDao"/>
+	</bean>	
+	-->
+</beans>

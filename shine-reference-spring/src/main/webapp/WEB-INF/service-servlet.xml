@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+	service-servlet.xml
+	Application context definition for "service" DispatcherServlet.
+	Exposes all the service interfaces. For implementations, see springconfig-service.xml
+-->
+<beans>	
+
+	<!-- 
+	// HTTP Invoker Services
+	-->
+	<bean id="httpInvokerMemberDetailsService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+		<property name="service" ref="memberDetailsService"/>
+		<property name="serviceInterface" value="com.shinetech.sample.common.IMemberDetailsService"/>
+	</bean>
+	
+	<!--  
+	 // Map the actual URL to the implmenting service 
+	 -->
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/memberDetailsService.httpInvoker.service">httpInvokerMemberDetailsService</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

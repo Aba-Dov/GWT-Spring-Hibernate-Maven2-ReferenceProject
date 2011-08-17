@@ -1,0 +1,11 @@
+
+HSQLDB
+======
+Run the Server
+java -cp ./lib/hsqldb.jar org.hsqldb.Server
+
+Run the Manager
+java -cp ./lib/hsqldb.jar org.hsqldb.util.DatabaseManager
+
+create table MEMBER (id integer IDENTITY, FIRST_NAME varchar, LAST_NAME varchar);
+insert into MEMBER values (1, 'Stephen', 'Callaghan');

@@ -1,0 +1,37 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<!--
+	// web.xml
+	// Loads Spring Context and sets up Dispatcher Servlet for Spring 
+-->
+<web-app>
+  <display-name>Shine Spring Sample</display-name>
+  
+     <context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>
+      		/WEB-INF/classes/springconfig-service.xml, /WEB-INF/classes/springconfig-dao.xml
+      </param-value>
+    </context-param>
+    	    
+    <listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>service</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>service</servlet-name>
+		<url-pattern>*.service</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+</web-app>

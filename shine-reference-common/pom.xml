@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<project>
+<!-- 
+	<parent>
+		<artifactId>shine-reference</artifactId>
+		<groupId>com.shinetech</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+-->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.shinetech</groupId>
+	<artifactId>shine-reference-common</artifactId>
+
+	<description>
+		Common Layer between Shine-Sample-Spring and Shine-Sample-GWT
+	</description>
+	<packaging>jar</packaging>
+	<name>shine-reference-common</name>
+	<version>1.2</version>
+	<url>http://shine-reference.googlecode.com</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.4</source>
+					<target>1.4</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
