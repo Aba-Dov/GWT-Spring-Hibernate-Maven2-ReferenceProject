@@ -1,37 +1,39 @@
+Welcome to Shine's GWT/Spring Reference Project
+===============================================
 
-Welcome to Shine GWT/Spring Reference
-======================================
- 
-1) Maven 2.* and Java 5 must be installed and available from the command line. Check :
-> mvn -version
-> java -version
+* First Steps *
 
-2) GWT 1.4.62 should be downloaded and installed locally on the machine. Then update the maven2 settings file in your home directory
-eg, File : ~/.m2/settings.xml
-<settings>
-   <profiles>
-     <profile>
-       <id>gwt-1.4.62</id>
-       <properties>
-         <google.webtoolkit.home>/Applications/java/gwt-mac-1.4.62</google.webtoolkit.home>
-         <!-- XstartOnFirstThread needed only on the mac -->
-         <google.webtoolkit.extrajvmargs>-XstartOnFirstThread</google.webtoolkit.extrajvmargs>
-       </properties>
-     </profile>
-   </profiles>
-   <activeProfiles>
-     <activeProfile>gwt-1.4.62</activeProfile>
-   </activeProfiles>
-</settings>
+Prerequisites : Sun Java 5, Maven 2.0.9+, Subversion needed for checkout of latest versions. Type "mvn -version" and "java -version" on the command line to check what you have installed. If maven is missing, follow the instructions here. Note, if running Fedora be sure to use the Sun JDK - other java versions are likely not to work, details to install are here. If running on Mac use MacPorts http://maven2.darwinports.com/
 
-3) Create the common layer between GWT and Spring
-> cd ./shine-reference/shine-reference-common
-> mvn source:jar install
+- The GWT Toolkit is now downloaded by Maven so there is no need to download and configure separately anymore (GWT 1.5.3 is used by default)
 
-4) Run the Spring Layer
-> cd ../shine-reference-spring
-> mvn jetty:run-war
+1. Download and unpack the zip file containing full project in the Downloads Tab
+2. Create the common layer between GWT and Spring:
 
-5) Run the GWT Layer (this will start a popup window showing the application running in GWT hosted mode)
-cd ../shine-reference-gwt
-mvn gwt:gwt
+cd shine-reference-common
+mvn source:jar install
+
+* Stand Alone *
+
+1. Run the Spring Layer in its own jetty container (maven will handle everything):
+
+cd ../shine-reference-spring
+mvn jetty:run-war
+
+2. Run the GWT Layer (note this will start a popup window showing the application running in GWT hosted mode):
+
+cd ../shine-reference/shine-reference-gwt
+mvn com.totsp.gwt:maven-googlewebtoolkit2-plugin:gwt
+
+* Tomcat Deploy *
+
+Create the Spring war file, this creates the war file in target/Shine-Spring-Sample.war This file can simply be placed in a tomcat webapps directory and it will expand and deploy:.
+
+cd shine-reference-spring
+mvn package
+
+The GWT war file will have been created by the gwt:gwt command in the Stand Alone method, this creates the war file in target/shinetech-gwt-sample.war Again this file can simply be moved to the Tomcat webapps directory. It presumes you have tomcat running on port 8080, this is contained in the server.properties file so it can talk to the server component. Unfortunately there is one small extra step needed due to an issue with the gwt-maven plugin, details here
+
+* Running *
+
+You can Add, Delete, Update and Search for new members. This will save to a runtime database in the Spring Layer (values are not persisted between different runs, an hsqldb memory database is used currently)
